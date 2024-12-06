@@ -1,0 +1,574 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXContainerItemProxy section */
+		9CBEE69B2D03021B000AEB27 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9CBEE67C2D030219000AEB27 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9CBEE6832D030219000AEB27;
+			remoteInfo = HyperhireAssignment;
+		};
+		9CBEE6A52D03021B000AEB27 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9CBEE67C2D030219000AEB27 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9CBEE6832D030219000AEB27;
+			remoteInfo = HyperhireAssignment;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		9CBEE6842D030219000AEB27 /* HyperhireAssignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HyperhireAssignment.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9CBEE69A2D03021B000AEB27 /* HyperhireAssignmentTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HyperhireAssignmentTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9CBEE6A42D03021B000AEB27 /* HyperhireAssignmentUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HyperhireAssignmentUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		9CBEE6AC2D03021B000AEB27 /* Exceptions for "HyperhireAssignment" folder in "HyperhireAssignment" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 9CBEE6832D030219000AEB27 /* HyperhireAssignment */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		9CBEE6862D030219000AEB27 /* HyperhireAssignment */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				9CBEE6AC2D03021B000AEB27 /* Exceptions for "HyperhireAssignment" folder in "HyperhireAssignment" target */,
+			);
+			path = HyperhireAssignment;
+			sourceTree = "<group>";
+		};
+		9CBEE69D2D03021B000AEB27 /* HyperhireAssignmentTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = HyperhireAssignmentTests;
+			sourceTree = "<group>";
+		};
+		9CBEE6A72D03021B000AEB27 /* HyperhireAssignmentUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = HyperhireAssignmentUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9CBEE6812D030219000AEB27 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9CBEE6972D03021B000AEB27 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9CBEE6A12D03021B000AEB27 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9CBEE67B2D030219000AEB27 = {
+			isa = PBXGroup;
+			children = (
+				9CBEE6862D030219000AEB27 /* HyperhireAssignment */,
+				9CBEE69D2D03021B000AEB27 /* HyperhireAssignmentTests */,
+				9CBEE6A72D03021B000AEB27 /* HyperhireAssignmentUITests */,
+				9CBEE6852D030219000AEB27 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9CBEE6852D030219000AEB27 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9CBEE6842D030219000AEB27 /* HyperhireAssignment.app */,
+				9CBEE69A2D03021B000AEB27 /* HyperhireAssignmentTests.xctest */,
+				9CBEE6A42D03021B000AEB27 /* HyperhireAssignmentUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9CBEE6832D030219000AEB27 /* HyperhireAssignment */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9CBEE6AD2D03021B000AEB27 /* Build configuration list for PBXNativeTarget "HyperhireAssignment" */;
+			buildPhases = (
+				9CBEE6802D030219000AEB27 /* Sources */,
+				9CBEE6812D030219000AEB27 /* Frameworks */,
+				9CBEE6822D030219000AEB27 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				9CBEE6862D030219000AEB27 /* HyperhireAssignment */,
+			);
+			name = HyperhireAssignment;
+			packageProductDependencies = (
+			);
+			productName = HyperhireAssignment;
+			productReference = 9CBEE6842D030219000AEB27 /* HyperhireAssignment.app */;
+			productType = "com.apple.product-type.application";
+		};
+		9CBEE6992D03021B000AEB27 /* HyperhireAssignmentTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9CBEE6B22D03021B000AEB27 /* Build configuration list for PBXNativeTarget "HyperhireAssignmentTests" */;
+			buildPhases = (
+				9CBEE6962D03021B000AEB27 /* Sources */,
+				9CBEE6972D03021B000AEB27 /* Frameworks */,
+				9CBEE6982D03021B000AEB27 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9CBEE69C2D03021B000AEB27 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				9CBEE69D2D03021B000AEB27 /* HyperhireAssignmentTests */,
+			);
+			name = HyperhireAssignmentTests;
+			packageProductDependencies = (
+			);
+			productName = HyperhireAssignmentTests;
+			productReference = 9CBEE69A2D03021B000AEB27 /* HyperhireAssignmentTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		9CBEE6A32D03021B000AEB27 /* HyperhireAssignmentUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9CBEE6B52D03021B000AEB27 /* Build configuration list for PBXNativeTarget "HyperhireAssignmentUITests" */;
+			buildPhases = (
+				9CBEE6A02D03021B000AEB27 /* Sources */,
+				9CBEE6A12D03021B000AEB27 /* Frameworks */,
+				9CBEE6A22D03021B000AEB27 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9CBEE6A62D03021B000AEB27 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				9CBEE6A72D03021B000AEB27 /* HyperhireAssignmentUITests */,
+			);
+			name = HyperhireAssignmentUITests;
+			packageProductDependencies = (
+			);
+			productName = HyperhireAssignmentUITests;
+			productReference = 9CBEE6A42D03021B000AEB27 /* HyperhireAssignmentUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9CBEE67C2D030219000AEB27 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1610;
+				LastUpgradeCheck = 1610;
+				TargetAttributes = {
+					9CBEE6832D030219000AEB27 = {
+						CreatedOnToolsVersion = 16.1;
+					};
+					9CBEE6992D03021B000AEB27 = {
+						CreatedOnToolsVersion = 16.1;
+						TestTargetID = 9CBEE6832D030219000AEB27;
+					};
+					9CBEE6A32D03021B000AEB27 = {
+						CreatedOnToolsVersion = 16.1;
+						TestTargetID = 9CBEE6832D030219000AEB27;
+					};
+				};
+			};
+			buildConfigurationList = 9CBEE67F2D030219000AEB27 /* Build configuration list for PBXProject "HyperhireAssignment" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 9CBEE67B2D030219000AEB27;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 9CBEE6852D030219000AEB27 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9CBEE6832D030219000AEB27 /* HyperhireAssignment */,
+				9CBEE6992D03021B000AEB27 /* HyperhireAssignmentTests */,
+				9CBEE6A32D03021B000AEB27 /* HyperhireAssignmentUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9CBEE6822D030219000AEB27 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9CBEE6982D03021B000AEB27 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9CBEE6A22D03021B000AEB27 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9CBEE6802D030219000AEB27 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9CBEE6962D03021B000AEB27 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9CBEE6A02D03021B000AEB27 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		9CBEE69C2D03021B000AEB27 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9CBEE6832D030219000AEB27 /* HyperhireAssignment */;
+			targetProxy = 9CBEE69B2D03021B000AEB27 /* PBXContainerItemProxy */;
+		};
+		9CBEE6A62D03021B000AEB27 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9CBEE6832D030219000AEB27 /* HyperhireAssignment */;
+			targetProxy = 9CBEE6A52D03021B000AEB27 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		9CBEE6AE2D03021B000AEB27 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = MY7H65WNWV;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = HyperhireAssignment/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rickywrwn.HyperhireAssignment;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		9CBEE6AF2D03021B000AEB27 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = MY7H65WNWV;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = HyperhireAssignment/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rickywrwn.HyperhireAssignment;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		9CBEE6B02D03021B000AEB27 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.1;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		9CBEE6B12D03021B000AEB27 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.1;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		9CBEE6B32D03021B000AEB27 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = MY7H65WNWV;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rickywrwn.HyperhireAssignmentTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HyperhireAssignment.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/HyperhireAssignment";
+			};
+			name = Debug;
+		};
+		9CBEE6B42D03021B000AEB27 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = MY7H65WNWV;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rickywrwn.HyperhireAssignmentTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HyperhireAssignment.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/HyperhireAssignment";
+			};
+			name = Release;
+		};
+		9CBEE6B62D03021B000AEB27 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = MY7H65WNWV;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rickywrwn.HyperhireAssignmentUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = HyperhireAssignment;
+			};
+			name = Debug;
+		};
+		9CBEE6B72D03021B000AEB27 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = MY7H65WNWV;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rickywrwn.HyperhireAssignmentUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = HyperhireAssignment;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9CBEE67F2D030219000AEB27 /* Build configuration list for PBXProject "HyperhireAssignment" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9CBEE6B02D03021B000AEB27 /* Debug */,
+				9CBEE6B12D03021B000AEB27 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9CBEE6AD2D03021B000AEB27 /* Build configuration list for PBXNativeTarget "HyperhireAssignment" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9CBEE6AE2D03021B000AEB27 /* Debug */,
+				9CBEE6AF2D03021B000AEB27 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9CBEE6B22D03021B000AEB27 /* Build configuration list for PBXNativeTarget "HyperhireAssignmentTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9CBEE6B32D03021B000AEB27 /* Debug */,
+				9CBEE6B42D03021B000AEB27 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9CBEE6B52D03021B000AEB27 /* Build configuration list for PBXNativeTarget "HyperhireAssignmentUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9CBEE6B62D03021B000AEB27 /* Debug */,
+				9CBEE6B72D03021B000AEB27 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9CBEE67C2D030219000AEB27 /* Project object */;
+}
