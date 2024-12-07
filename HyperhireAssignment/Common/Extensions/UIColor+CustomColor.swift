@@ -41,6 +41,10 @@ extension UIColor {
         return UIColor(hex: "#5628F8")
     }
     
+    static var playlistBorderColor: UIColor {
+        return UIColor(hex: "#7F7F7F")
+    }
+    
 }
 
 

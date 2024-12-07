@@ -4,8 +4,8 @@
 <dict>
 	<key>UIAppFonts</key>
 	<array>
-		<string>AvenirNextLTPro-Bold</string>
-		<string>AvenirNextLTPro-Regular</string>
+		<string>AvenirNextLTPro-Bold.otf</string>
+		<string>AvenirNextLTPro-Regular.otf</string>
 	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
