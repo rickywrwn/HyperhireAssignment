@@ -7,6 +7,7 @@ target 'HyperhireAssignment' do
 
   # Pods for HyperhireAssignment
   pod 'Kingfisher', '~> 8.0'
+  pod 'FloatingPanel'
 
   target 'HyperhireAssignmentTests' do
     inherit! :search_paths

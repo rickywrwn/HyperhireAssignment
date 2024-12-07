@@ -15,32 +15,13 @@ class LibraryCoordinator: Coordinator {
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
-//        setupNavigationBar()
     }
     
     func start() {
-        showLibraryView()
-    }
-    
-    private func showLibraryView() {
         let viewController = LibraryViewController()
         viewController.coordinator = self
-        navigationController.pushViewController(viewController, animated: false)
+        navigationController.setViewControllers([viewController], animated: false)
     }
-    
-//    private func setupNavigationBar() {
-//        let appearance = UINavigationBarAppearance()
-//        appearance.configureWithTransparentBackground()
-//        appearance.backgroundColor = .clear
-//        appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.channelNavigationTextColor]
-//        appearance.titleTextAttributes = [.foregroundColor: UIColor.channelNavigationTextColor]
-//        
-//        navigationController.navigationBar.standardAppearance = appearance
-//        navigationController.navigationBar.scrollEdgeAppearance = appearance
-//        navigationController.navigationBar.compactAppearance = appearance
-//        
-//        navigationController.navigationBar.tintColor = .white
-//    }
 }
 
 

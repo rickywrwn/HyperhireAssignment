@@ -29,10 +29,10 @@ class LibraryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .backgroundColor
-        // Do any additional setup after loading the view.
         
         setupUI()
         toggleStyleButton.addTarget(self, action: #selector(toggleViewMode), for: .touchUpInside)
+        addButton.addTarget(self, action: #selector(handleAdd), for: .touchUpInside)
     }
     
     @objc private func toggleViewMode() {
@@ -44,6 +44,10 @@ class LibraryViewController: UIViewController {
         }else{
             toggleStyleButton.setImage(.listIcon, for: .normal)
         }
+        
+    }
+    
+    @objc private func handleAdd() {
         
     }
     
