@@ -12,6 +12,7 @@ extension UIFont{
     public enum AvenirNextType: String {
         case regular = "-Regular"
         case bold = "-Bold"
+        case light = "-UltLtCn"
     }
     
     static func AvenirNext(type: AvenirNextType, size: CGFloat) -> UIFont?{

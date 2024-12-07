@@ -17,6 +17,7 @@ struct ImageManager {
         case homeIcon = "home_icon"
         case searchIcon = "search_icon"
         case libraryIcon = "library_icon"
+        case addPlaylistIcon = "add_playlist_icon"
     }
 
     static func image(for imageAsset: ImageAsset) -> UIImage? {

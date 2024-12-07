@@ -6,10 +6,16 @@
 //
 
 import UIKit
+import FloatingPanel
+
+protocol DismissAddPlaylistPanelDelegate {
+    func handleAddPlaylist()
+}
 
 class LibraryViewController: UIViewController {
     
     weak var coordinator: LibraryCoordinator?
+    var fpc: FloatingPanelController!
     
     // Current view mode with UserDefaults persistence
     private(set) var currentViewMode: ViewMode {
@@ -31,6 +37,9 @@ class LibraryViewController: UIViewController {
         view.backgroundColor = .backgroundColor
         
         setupUI()
+        setupFloatingPanel()
+        coordinator?.showAddPlaylist()
+        
         toggleStyleButton.addTarget(self, action: #selector(toggleViewMode), for: .touchUpInside)
         addButton.addTarget(self, action: #selector(handleAdd), for: .touchUpInside)
     }
@@ -48,7 +57,7 @@ class LibraryViewController: UIViewController {
     }
     
     @objc private func handleAdd() {
-        
+        self.present(fpc, animated: true)
     }
     
     private func configureCollectionViewLayout() {
@@ -186,4 +195,13 @@ class LibraryViewController: UIViewController {
         return collectionView
     }()
 
+}
+
+
+extension LibraryViewController: DismissAddPlaylistPanelDelegate{
+    
+    func handleAddPlaylist() {
+        coordinator?.showAddPlaylist()
+    }
+    
 }

@@ -33,7 +33,7 @@ extension UIColor {
         return UIColor(hex: "#FFFFFF")
     }
     
-    static var confrimButtonColor: UIColor {
+    static var confirmButtonColor: UIColor {
         return UIColor(hex: "#1ED760")
     }
     

@@ -5,8 +5,7 @@
 //  Created by ricky wirawan on 07/12/24.
 //
 
-//import UIKit
-import SwiftUI
+import UIKit
 
 class LibraryCoordinator: Coordinator {
     var navigationController: UINavigationController
@@ -21,6 +20,16 @@ class LibraryCoordinator: Coordinator {
         let viewController = LibraryViewController()
         viewController.coordinator = self
         navigationController.setViewControllers([viewController], animated: false)
+    }
+    
+    func showAddPlaylist (){
+        let addPlaylistCoordinator = PlaylistCoordinator(
+            navigationController: navigationController
+        )
+        addPlaylistCoordinator.parentCoordinator = self
+        childCoordinators.append(addPlaylistCoordinator)
+        addPlaylistCoordinator.start()
+        
     }
 }
 
