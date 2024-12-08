@@ -39,9 +39,41 @@ class SongListViewController: UIViewController{
         setupSearchDebounce()
         setupLoadingView()
         setupErrorView()
+        setupRecentSearch()
         
         searchTextField.delegate = self
         
+    }
+    
+    private func setupRecentSearch() {
+        
+        if let musicData = viewModel.retrieveRecentSearch() {
+            recentSearchView.musicData = musicData
+            
+            view.addSubview(recentSearchLabel)
+            view.addSubview(recentSearchView)
+            
+            NSLayoutConstraint.activate([
+                recentSearchLabel.topAnchor.constraint(equalTo: searchTextField.bottomAnchor, constant: 30),
+                recentSearchLabel.leadingAnchor.constraint(equalTo: searchTextField.leadingAnchor, constant: 10),
+                
+                recentSearchView.topAnchor.constraint(equalTo: recentSearchLabel.bottomAnchor, constant: 20),
+                recentSearchView.leadingAnchor.constraint(equalTo: searchTextField.leadingAnchor, constant: 10),
+                recentSearchView.heightAnchor.constraint(equalToConstant: 50),
+                recentSearchView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -18),
+            ])
+            
+            recentSearchView.isUserInteractionEnabled = true
+            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
+            recentSearchView.addGestureRecognizer(tapGesture)
+        }
+    }
+    
+    @objc func handleTap(_ sender: UITapGestureRecognizer) {
+        if let music = viewModel.retrieveRecentSearch(){
+            addMusicDelegate?.handleAddMusic(with: music)
+            coordinator?.popViewController()
+        }
     }
     
     private func showErrorView(with error: Error) {
@@ -90,6 +122,8 @@ class SongListViewController: UIViewController{
     private func setupBindings() {
         
         viewModel.onMusicDataChanged = { [weak self] in
+            self?.recentSearchView.isHidden = !(self?.viewModel.musicData?.isEmpty ?? false)
+            self?.recentSearchLabel.isHidden = !(self?.viewModel.musicData?.isEmpty ?? false)
             self?.collectionView.reloadData()
             self?.stopLoading()
         }
@@ -162,6 +196,7 @@ class SongListViewController: UIViewController{
         searchBar.layer.cornerRadius = 10
         searchBar.showsCancelButton = true
         searchBar.returnKeyType = .search
+        
         // Customize the search icon
         let iconImage = ImageManager.image(for: .searchIcon)
         let imageView = UIImageView(image: iconImage)
@@ -188,6 +223,21 @@ class SongListViewController: UIViewController{
         return collectionView
     }()
     
+    private var recentSearchLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .primaryTextColor
+        label.font = .AvenirNext(type: .bold, size: 17)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Recent Searches"
+        return label
+    }()
+    
+    private var recentSearchView: RecentSearchView = {
+        let view = RecentSearchView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
 }
 
 extension SongListViewController: UISearchBarDelegate {
@@ -200,7 +250,7 @@ extension SongListViewController: UISearchBarDelegate {
         Task {
             await viewModel.fetchSong(search: searchBar.text ?? "")
         }
-        searchBar.resignFirstResponder() // Dismiss the keyboard
+        searchBar.resignFirstResponder()
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {

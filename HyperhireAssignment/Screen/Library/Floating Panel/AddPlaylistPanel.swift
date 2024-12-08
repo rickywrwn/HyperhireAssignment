@@ -13,7 +13,7 @@ final class AddPlaylistPanel: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .backgroundColor
+        view.backgroundColor = .secondaryBackgroundColor
         setupUI()
         
         viewButton.addTarget(self, action: #selector(handleAdd), for: .touchUpInside)
@@ -35,7 +35,7 @@ final class AddPlaylistPanel: UIViewController {
         
         NSLayoutConstraint.activate([
             
-            containerPlaylistView.topAnchor.constraint(equalTo: view.topAnchor, constant: 35),
+            containerPlaylistView.topAnchor.constraint(equalTo: view.topAnchor, constant: 25),
             containerPlaylistView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 18),
             containerPlaylistView.heightAnchor.constraint(equalToConstant: 45),
             containerPlaylistView.widthAnchor.constraint(equalToConstant: 45),

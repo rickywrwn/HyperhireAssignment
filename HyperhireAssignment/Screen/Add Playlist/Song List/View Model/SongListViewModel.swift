@@ -16,6 +16,8 @@ protocol SongListViewModelProtocol: AnyObject {
     var onErrorDataChanged: (() -> Void)? { get set }
     
     func fetchSong(search: String) async
+    func saveRecentSearch(music: Results?)
+    func retrieveRecentSearch() -> Results?
 }
 
 final class SongListViewModel: SongListViewModelProtocol{
@@ -42,6 +44,23 @@ final class SongListViewModel: SongListViewModelProtocol{
         searchSongUseCase: SearchSongUseCaseProtocol
     ) {
         self.searchSongUseCase = searchSongUseCase
+    }
+    
+    func saveRecentSearch(music: Results?) {
+        let encoder = JSONEncoder()
+        if let encoded = try? encoder.encode(music) {
+            UserDefaults.standard.set(encoded, forKey: "savedRecentSearch")
+        }
+    }
+    
+    func retrieveRecentSearch() -> Results? {
+        if let savedSearchData = UserDefaults.standard.data(forKey: "savedRecentSearch") {
+            let decoder = JSONDecoder()
+            if let decodedData = try? decoder.decode(Results.self, from: savedSearchData) {
+                return decodedData
+            }
+        }
+        return nil
     }
     
     @MainActor //main actor to make sure its on main thread

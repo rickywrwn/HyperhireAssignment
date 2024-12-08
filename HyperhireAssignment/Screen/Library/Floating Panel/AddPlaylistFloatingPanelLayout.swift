@@ -12,6 +12,6 @@ final class AddPlaylistFloatingPanelLayout: FloatingPanelLayout {
     let position: FloatingPanelPosition = .bottom
     let initialState: FloatingPanelState = .tip
     let anchors: [FloatingPanelState: FloatingPanelLayoutAnchoring] = [
-        .tip: FloatingPanelLayoutAnchor(absoluteInset: 112, edge: .bottom, referenceGuide: .safeArea),
+        .tip: FloatingPanelLayoutAnchor(absoluteInset: 80, edge: .bottom, referenceGuide: .safeArea),
     ]
 }

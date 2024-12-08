@@ -63,6 +63,7 @@ extension SongListViewController: UICollectionViewDataSource, UICollectionViewDe
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let music = viewModel.musicData?[indexPath.row]{
+            viewModel.saveRecentSearch(music: music)
             addMusicDelegate?.handleAddMusic(with: music)
             coordinator?.popViewController()
         }
