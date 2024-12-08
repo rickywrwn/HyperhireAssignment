@@ -10,6 +10,7 @@ import Foundation
 protocol PlaylistRepositoryProtocol {
     func savePlaylistsToCache(name: String?, uid: String?, musicToSave: Results?) async -> Result<String, Error>
     func retrievePlaylistFromCache() async -> Result<[SavedPlaylist], CacheError>
+    func retrievePlaylistWithUid(playlistUid: String) async -> Result<SavedPlaylist, CacheError>
 }
 
 class PlaylistRepositoryImpl: PlaylistRepositoryProtocol {
@@ -23,6 +24,7 @@ class PlaylistRepositoryImpl: PlaylistRepositoryProtocol {
     func savePlaylistsToCache(name: String?, uid: String?, musicToSave: Results?) async -> Result<String, Error> {
         //retrieve all playlist from cache to add new music by overriding
         let savedCache = await retrievePlaylistFromCache()
+        var generatedUid: String = ""
         
         switch savedCache {
         case .success(let resultPlaylist):
@@ -42,13 +44,13 @@ class PlaylistRepositoryImpl: PlaylistRepositoryProtocol {
             }else{
                 //if unique ID is not provided, meaning it's new playlist
                 //save new playlist
-                playlistData = [SavedPlaylist(name: name, uid: generateUniqueCacheKey(), music: [])]
+                generatedUid = generateUniqueCacheKey()
+                playlistData.append(SavedPlaylist(name: name, uid: generatedUid, music: []))
             }
             
             do {
-                
                 try cacheService.save(playlistData, forKey: playlistsCacheKey)
-                return .success("Success saving cache")
+                return .success(generatedUid) //return generated uid
             }catch {
                 print("saving cache error: \(error.localizedDescription)")
                 return .failure(error)
@@ -58,36 +60,60 @@ class PlaylistRepositoryImpl: PlaylistRepositoryProtocol {
             
             if error == CacheError.cacheDataNotExist{
                 //cache not exist, save new playlist data to cache
+//                print("save brand new cache")
                 
                 do {
-                    let playlistData = [SavedPlaylist(name: name, uid: generateUniqueCacheKey(), music: [])]
+                    generatedUid = generateUniqueCacheKey()
+                    let playlistData = [SavedPlaylist(name: name, uid: generatedUid, music: [])]
                     
                     try cacheService.save(playlistData, forKey: playlistsCacheKey)
-                    return .success("Success saving new cache")
+                    return .success(generatedUid)
                 }catch {
-                    print("saving cache error: \(error.localizedDescription)")
+                    print("saving new cache error: \(error.localizedDescription)")
                     return .failure(error)
                 }
                 
             }else{
                 // error in cache functionality
-                
-                print("retrieve cache error (from save): \(error.localizedDescription)")
+                print("save new cache error (from save): \(error.localizedDescription)")
                 return .failure(error)
             }
+        }
+    }
+    
+    func retrievePlaylistWithUid(playlistUid: String) async -> Result<SavedPlaylist, CacheError> {
+        
+        do {
+            if let cachedPlaylist: [SavedPlaylist] = try cacheService.retrieve(forKey: playlistsCacheKey){
+                //cache exist then filter for the same uid
+                
+                if let playlist = cachedPlaylist.first(where: { $0.uid == playlistUid }) {
+                    return .success(playlist)
+                } else {
+                    print("retrived cache with uid not exist ", playlistUid)
+                    return .failure(CacheError.cacheDataNotExist)
+                }
+            }else{
+                // cache not exist
+                print("retrived cache not exist ", CacheError.cacheDataNotExist)
+                return .failure(CacheError.cacheDataNotExist)
+            }
+        } catch {
+            print("retrieve cache error: \(error.localizedDescription)")
+            return .failure(CacheError.failedToGetCacheDirectory)
         }
     }
     
     func retrievePlaylistFromCache() async -> Result<[SavedPlaylist], CacheError> {
         
         do {
+//            try cacheService.clear()
             if let cachedPlaylist: [SavedPlaylist] = try cacheService.retrieve(forKey: playlistsCacheKey){
                 //cache exist
-//                print("retrive cache success ", cachedPlaylist)
                 return .success(cachedPlaylist)
             }else{
                 // cache not exist
-//                print("retrived cache not exist ", CacheError.cacheDataNotExist)
+                print("retrived cache not exist ", CacheError.cacheDataNotExist)
                 return .failure(CacheError.cacheDataNotExist)
             }
         } catch {

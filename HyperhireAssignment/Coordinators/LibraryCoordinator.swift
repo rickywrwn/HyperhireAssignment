@@ -29,13 +29,24 @@ class LibraryCoordinator: Coordinator {
     }
     
     func showAddPlaylist (){
-        let addPlaylistCoordinator = PlaylistCoordinator(
+        let playlistCoordinator = PlaylistCoordinator(
             navigationController: navigationController,
             container: container
         )
-        addPlaylistCoordinator.parentCoordinator = self
-        childCoordinators.append(addPlaylistCoordinator)
-        addPlaylistCoordinator.start()
+        playlistCoordinator.parentCoordinator = self
+        childCoordinators.append(playlistCoordinator)
+        playlistCoordinator.start()
+        
+    }
+    
+    func showDetailPlaylist (with playlistUid: String){
+        let playlistCoordinator = PlaylistCoordinator(
+            navigationController: navigationController,
+            container: container
+        )
+        playlistCoordinator.parentCoordinator = self
+        childCoordinators.append(playlistCoordinator)
+        playlistCoordinator.showDetailPlaylist(playlistUid: playlistUid)
         
     }
 }

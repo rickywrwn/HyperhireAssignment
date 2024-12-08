@@ -17,6 +17,7 @@ final class DIContainer {
     let searchSongUseCase: SearchSongUseCaseImpl
     let getPlaylistUseCase: GetPlaylistUseCaseImpl
     let savePlaylistUseCase: SavePlaylistUseCaseImpl
+    let getDetailPlaylistUseCase: GetDetailPlaylistUseCaseImpl
     
     init(factory: DIContainerFactory) {
         self.factory = factory
@@ -33,6 +34,7 @@ final class DIContainer {
         self.searchSongUseCase = SearchSongUseCaseImpl(repository: songRepository)
         self.getPlaylistUseCase = GetPlaylistUseCaseImpl(repository: playlistRepository)
         self.savePlaylistUseCase = SavePlaylistUseCaseImpl(repository: playlistRepository)
+        self.getDetailPlaylistUseCase = GetDetailPlaylistUseCaseImpl(repository: playlistRepository)
     }
 }
 

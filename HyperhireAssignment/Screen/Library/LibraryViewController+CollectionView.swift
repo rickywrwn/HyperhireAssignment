@@ -86,7 +86,7 @@ extension LibraryViewController: UICollectionViewDataSource, UICollectionViewDel
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return viewModel.playlistData?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -99,6 +99,9 @@ extension LibraryViewController: UICollectionViewDataSource, UICollectionViewDel
             ) as? ListLibraryCollectionViewCell else {
                 return UICollectionViewCell()
             }
+            if let playlist = viewModel.playlistData?[indexPath.row] {
+                cell.configure(with: playlist)
+            }
             return cell
         case .grid:
             guard let cell = collectionView.dequeueReusableCell(
@@ -107,7 +110,16 @@ extension LibraryViewController: UICollectionViewDataSource, UICollectionViewDel
             ) as? GridLibraryCollectionViewCell else {
                 return UICollectionViewCell()
             }
+            if let playlist = viewModel.playlistData?[indexPath.row] {
+                cell.configure(with: playlist)
+            }
             return cell
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let playlist = viewModel.playlistData?[indexPath.row] {
+            coordinator?.showDetailPlaylist(with: playlist.uid ?? "")
         }
     }
 }

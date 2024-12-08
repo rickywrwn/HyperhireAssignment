@@ -60,4 +60,11 @@ extension SongListViewController: UICollectionViewDataSource, UICollectionViewDe
         }
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let music = viewModel.musicData?[indexPath.row]{
+            addMusicDelegate?.handleAddMusic(with: music)
+            coordinator?.popViewController()
+        }
+    }
 }

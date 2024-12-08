@@ -14,7 +14,7 @@ protocol LibraryViewModelProtocol: AnyObject {
     var onPlaylistDataChanged: (() -> Void)? { get set }
     var onErrorDataChanged: (() -> Void)? { get set }
     
-    func viewDidLoad()
+    func viewDidAppear()
     func fetchPlaylist() async
 }
 
@@ -44,7 +44,7 @@ final class LibraryViewModel: LibraryViewModelProtocol{
         self.getPlaylistUseCase = getPlaylistUseCase
     }
     
-    func viewDidLoad() {
+    func viewDidAppear() {
         Task {
             await fetchPlaylist()
         }
@@ -56,7 +56,6 @@ final class LibraryViewModel: LibraryViewModelProtocol{
         
         switch result {
         case .success(let resultData):
-            print("mvvm success ", resultData)
             playlistData = resultData
             
         case .failure(let error):

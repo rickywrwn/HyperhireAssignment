@@ -15,7 +15,7 @@ final class ListLibraryCollectionViewCell: UICollectionViewCell {
         imageView.contentMode = .scaleAspectFill
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.clipsToBounds = true
-        imageView.backgroundColor = .red
+        imageView.backgroundColor = .searchTextFieldColor
         return imageView
     }()
     
@@ -51,9 +51,24 @@ final class ListLibraryCollectionViewCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-//        imageView.image = nil
-//        titleLabel.text = nil
-//        subtitleLabel.text = nil
+        imageView.image = nil
+        titleLabel.text = nil
+        subtitleLabel.text = nil
+    }
+    
+    func configure(with playlist: SavedPlaylist){
+        
+//        if let imageUrlString = music.artworkUrl60, let imageUrl = URL(string: imageUrlString) {
+//            imageView.kf.indicatorType = .activity
+//            imageView.kf.setImage(with: imageUrl, options: [.transition(.fade(0.2)), .cacheOriginalImage])
+//        } else {
+//            imageView.image = ImageManager.image(for: .imagePlaceholder)
+//        }
+    
+        titleLabel.text = playlist.name
+        if let musicCount = playlist.music?.count{
+            subtitleLabel.text = "Playlist • \(musicCount) Songs"
+        }
     }
     
     private func setupUI() {

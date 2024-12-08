@@ -26,9 +26,12 @@ class DetailPlaylistViewController: UIViewController {
         super.viewDidLoad()
         createGradientBG()
         setupUI()
+        setupBindings()
         
         backButton.addTarget(self, action: #selector(handleBack), for: .touchUpInside)
         addButton.addTarget(self, action: #selector(handleAdd), for: .touchUpInside)
+        
+        viewModel.viewDidLoad()
     }
     
     @objc private func handleBack() {
@@ -36,7 +39,18 @@ class DetailPlaylistViewController: UIViewController {
     }
     
     @objc private func handleAdd() {
-        coordinator?.showSongList()
+        coordinator?.showSongList(withParentDelegate: self)
+    }
+    
+    private func setupBindings() {
+        
+        viewModel.onPlaylistDataChanged = { [weak self] in
+            self?.titleLabel.text = self?.viewModel.playlistData?.name
+            if let songCount = self?.viewModel.playlistData?.music?.count{
+                self?.songLabel.text = "\(songCount) songs"
+            }
+            self?.collectionView.reloadData()
+        }
     }
     
     private func setupUI() {
@@ -85,7 +99,7 @@ class DetailPlaylistViewController: UIViewController {
         label.textColor = .primaryTextColor
         label.font = .AvenirNext(type: .bold, size: 19)
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "My First Library"
+//        label.text = "My First Library"
         label.lineBreakMode = .byTruncatingTail
         return label
     }()
@@ -95,7 +109,7 @@ class DetailPlaylistViewController: UIViewController {
         label.textColor = .secondaryTextColor
         label.font = .AvenirNext(type: .bold, size: 12)
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "0 songs"
+//        label.text = "0 songs"
         return label
     }()
     
@@ -127,55 +141,5 @@ class DetailPlaylistViewController: UIViewController {
         return collectionView
     }()
     
-
-    func createCollectionViewLayout() -> UICollectionViewLayout {
-        return UICollectionViewCompositionalLayout(section: createListSection())
-    }
-    
-    private func createListSection() -> NSCollectionLayoutSection {
-        // Item
-        let itemSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(1.0),
-            heightDimension: .fractionalHeight(1.0)
-        )
-        let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 18, trailing: 0)
-        
-        // Group
-        let groupSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(1.0),
-            heightDimension: .uniformAcrossSiblings(estimate: 70.0)
-        )
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
-        
-        // Section
-        let section = NSCollectionLayoutSection(group: group)
-        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
-        section.interGroupSpacing = 0
-        
-        return section
-    }
-    
-}
-
-extension DetailPlaylistViewController: UICollectionViewDataSource, UICollectionViewDelegate {
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        guard let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: DetailPlaylistCollectionViewCell.identifier,
-            for: indexPath
-        ) as? DetailPlaylistCollectionViewCell else {
-            return UICollectionViewCell()
-        }
-        return cell
-    }
 }
 

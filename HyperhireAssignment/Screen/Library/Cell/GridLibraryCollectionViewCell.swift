@@ -15,14 +15,13 @@ final class GridLibraryCollectionViewCell: UICollectionViewCell {
         imageView.contentMode = .scaleAspectFill
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.clipsToBounds = true
-        imageView.backgroundColor = .red
+        imageView.backgroundColor = .searchTextFieldColor
         return imageView
     }()
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.textColor = .primaryTextColor
-        label.text = "My first library"
         label.font = .AvenirNext(type: .bold, size: 11)
         label.lineBreakMode = .byTruncatingTail
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -32,9 +31,7 @@ final class GridLibraryCollectionViewCell: UICollectionViewCell {
     private lazy var subtitleLabel: UILabel = {
         let label = UILabel()
         label.textColor = .secondaryTextColor
-        label.text = "subtitle"
         label.font = .AvenirNext(type: .regular, size: 11)
-        label.text = "Playlist • 58 Songs"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -51,9 +48,24 @@ final class GridLibraryCollectionViewCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-//        imageView.image = nil
-//        titleLabel.text = nil
-//        subtitleLabel.text = nil
+        imageView.image = nil
+        titleLabel.text = nil
+        subtitleLabel.text = nil
+    }
+    
+    func configure(with playlist: SavedPlaylist){
+        
+//        if let imageUrlString = music.artworkUrl60, let imageUrl = URL(string: imageUrlString) {
+//            imageView.kf.indicatorType = .activity
+//            imageView.kf.setImage(with: imageUrl, options: [.transition(.fade(0.2)), .cacheOriginalImage])
+//        } else {
+//            imageView.image = ImageManager.image(for: .imagePlaceholder)
+//        }
+    
+        titleLabel.text = playlist.name
+        if let musicCount = playlist.music?.count{
+            subtitleLabel.text = "Playlist • \(musicCount) Songs"
+        }
     }
     
     private func setupUI() {

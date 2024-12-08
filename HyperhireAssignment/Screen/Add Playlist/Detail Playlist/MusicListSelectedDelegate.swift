@@ -1,5 +1,5 @@
 //
-//  SongListSelectedDelegate.swift
+//  MusicListSelectedDelegate.swift
 //  HyperhireAssignment
 //
 //  Created by ricky wirawan on 08/12/24.
@@ -7,14 +7,14 @@
 
 import Foundation
 
-protocol SongListSelectedDelegate {
-    func handleAddSong()
+protocol MusicListSelectedDelegate {
+    func handleAddMusic(with music: Results)
 }
 
-extension DetailPlaylistViewController: SongListSelectedDelegate{
+extension DetailPlaylistViewController: MusicListSelectedDelegate{
     
     func handleAddMusic(with music: Results) {
-        
+        viewModel.saveMusicToPlaylist(withMusic: music)
     }
     
 }

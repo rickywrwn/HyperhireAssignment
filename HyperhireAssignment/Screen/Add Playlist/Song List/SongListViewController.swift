@@ -12,6 +12,7 @@ class SongListViewController: UIViewController{
     
     weak var coordinator: PlaylistCoordinator?
     let viewModel: SongListViewModelProtocol
+    var addMusicDelegate: MusicListSelectedDelegate?
     
     // PassthroughSubject to send search queries
     private var searchSubject = PassthroughSubject<String, Never>()

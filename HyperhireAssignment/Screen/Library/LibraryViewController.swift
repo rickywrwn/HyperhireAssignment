@@ -49,11 +49,21 @@ class LibraryViewController: UIViewController {
         
         setupUI()
         setupFloatingPanel()
+        setupBindings()
         
         toggleStyleButton.addTarget(self, action: #selector(toggleViewMode), for: .touchUpInside)
         addButton.addTarget(self, action: #selector(handleAdd), for: .touchUpInside)
         
-        viewModel.viewDidLoad()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        viewModel.viewDidAppear()
+    }
+    
+    private func setupBindings() {
+        viewModel.onPlaylistDataChanged = { [weak self] in
+            self?.collectionView.reloadData()
+        }
     }
     
     @objc private func toggleViewMode() {

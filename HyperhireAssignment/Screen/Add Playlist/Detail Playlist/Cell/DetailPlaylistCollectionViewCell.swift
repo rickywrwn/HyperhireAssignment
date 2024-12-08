@@ -22,9 +22,9 @@ final class DetailPlaylistCollectionViewCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-//        imageView.image = nil
-//        titleLabel.text = nil
-//        subtitleLabel.text = nil
+        imageView.image = nil
+        titleLabel.text = nil
+        subtitleLabel.text = nil
     }
     
     private func setupUI() {
@@ -55,19 +55,31 @@ final class DetailPlaylistCollectionViewCell: UICollectionViewCell {
         ])
     }
     
+    func configure(with music: Results){
+        
+        if let imageUrlString = music.artworkUrl60, let imageUrl = URL(string: imageUrlString) {
+            imageView.kf.indicatorType = .activity
+            imageView.kf.setImage(with: imageUrl, options: [.transition(.fade(0.2)), .cacheOriginalImage])
+        } else {
+            imageView.image = ImageManager.image(for: .imagePlaceholder)
+        }
+    
+        titleLabel.text = music.trackName
+        subtitleLabel.text = music.artistName
+    }
+    
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.clipsToBounds = true
-        imageView.backgroundColor = .red
+        imageView.backgroundColor = .searchTextFieldColor
         return imageView
     }()
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.textColor = .primaryTextColor
-        label.text = "We Cry Together"
         label.font = .AvenirNext(type: .bold, size: 14)
         label.lineBreakMode = .byTruncatingTail
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -78,7 +90,6 @@ final class DetailPlaylistCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         label.textColor = .secondaryTextColor
         label.font = .AvenirNext(type: .regular, size: 11)
-        label.text = "Kendrick Lamar, Taylour Paige"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()

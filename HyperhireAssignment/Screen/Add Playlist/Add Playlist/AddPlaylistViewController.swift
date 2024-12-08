@@ -20,7 +20,7 @@ class AddPlaylistViewController: UIViewController {
     
     @objc private func handleConfirm(){
         coordinator?.dismissViewController()
-        coordinator?.showDetailPlaylist(with: nameTextField.text ?? "")
+        coordinator?.showDetailPlaylist(title: nameTextField.text ?? "")
     }
     
     private func setupUI() {

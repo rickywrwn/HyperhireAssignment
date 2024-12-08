@@ -29,11 +29,17 @@ class PlaylistCoordinator: Coordinator {
         
     }
     
-    func showDetailPlaylist(with title: String? = nil) {
+    func showDetailPlaylist(title: String? = nil, playlistUid: String? = nil) {
         let getPlaylistUseCase = container.getPlaylistUseCase
         let savePlaylistUseCase = container.savePlaylistUseCase
+        let getDetailPlaylistUseCase = container.getDetailPlaylistUseCase
         
-        let viewModel = DetailPlaylistViewModel(getPlaylistUseCase: getPlaylistUseCase, savePlaylistUseCase: savePlaylistUseCase, titleFromAddPlaylist: title)
+        let viewModel = DetailPlaylistViewModel(
+                            getPlaylistUseCase: getPlaylistUseCase,
+                            savePlaylistUseCase: savePlaylistUseCase,
+                            getDetailPlaylistUseCase: getDetailPlaylistUseCase,
+                            titleFromAddPlaylist: title,
+                            playlistUid: playlistUid)
         
         let viewController = DetailPlaylistViewController(viewModel: viewModel)
         viewController.coordinator = self
@@ -42,13 +48,14 @@ class PlaylistCoordinator: Coordinator {
         
     }
     
-    func showSongList() {
+    func showSongList(withParentDelegate: DetailPlaylistViewController) {
         let searchSongUseCase = container.searchSongUseCase
         
         let viewModel = SongListViewModel(searchSongUseCase: searchSongUseCase)
         
         let viewController = SongListViewController(viewModel: viewModel)
         viewController.coordinator = self
+        viewController.addMusicDelegate = withParentDelegate
         navigationController.isNavigationBarHidden = true
         navigationController.pushViewController(viewController, animated: true)
         
