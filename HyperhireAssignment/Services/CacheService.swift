@@ -60,5 +60,6 @@ class CacheService: CacheServiceProtocol {
     func clear() {
         try? fileManager.removeItem(at: cacheDirectory)
         try? createDirectoryIfNeeded()
+        print("Cache cleared")
     }
 }

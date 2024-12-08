@@ -48,14 +48,12 @@ class AppCoordinator: Coordinator {
     
     private func setupTabs(_ tabBarController: TabBarController) {
         
-        let homeCoordinator = LibraryCoordinator(
-            navigationController: UINavigationController(),
-            container: container
+        let homeCoordinator = EmptyCoordinator(
+            navigationController: UINavigationController()
         )
         
-        let searchCoordinator = LibraryCoordinator(
-            navigationController: UINavigationController(),
-            container: container
+        let searchCoordinator = EmptyCoordinator(
+            navigationController: UINavigationController()
         )
         
         let libraryCoordinator = LibraryCoordinator(

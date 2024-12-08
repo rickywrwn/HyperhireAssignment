@@ -19,7 +19,11 @@ class LibraryCoordinator: Coordinator {
     }
     
     func start() {
-        let viewController = LibraryViewController()
+        let getPlaylistUseCase = container.getPlaylistUseCase
+        
+        let viewModel = LibraryViewModel(getPlaylistUseCase: getPlaylistUseCase)
+        
+        let viewController = LibraryViewController(viewModel: viewModel)
         viewController.coordinator = self
         navigationController.setViewControllers([viewController], animated: false)
     }

@@ -73,7 +73,7 @@ final class ListLibraryCollectionViewCell: UICollectionViewCell {
             titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -18),
             
             subtitleLabel.topAnchor.constraint(equalTo: imageView.centerYAnchor, constant: 4),
-            subtitleLabel.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: 14),
+            subtitleLabel.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: 10),
             subtitleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -18),
         ])
     }

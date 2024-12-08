@@ -13,12 +13,9 @@ protocol SongRepositoryProtocol {
 
 class SongRepositoryImpl: SongRepositoryProtocol {
     private let networkService: NetworkServiceProtocol
-    private let cacheService: CacheServiceProtocol
-    private let cacheKey = "cached_categories"
     
-    init(networkService: NetworkServiceProtocol, cacheService: CacheServiceProtocol) {
+    init(networkService: NetworkServiceProtocol) {
         self.networkService = networkService
-        self.cacheService = cacheService
     }
     
     func fetchSearchSong(search: String) async -> Result<[Results], NetworkError> {

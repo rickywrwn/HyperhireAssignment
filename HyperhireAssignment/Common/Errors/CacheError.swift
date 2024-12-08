@@ -8,5 +8,6 @@
 import Foundation
 
 enum CacheError: Error {
+    case cacheDataNotExist
     case failedToGetCacheDirectory
 }

@@ -10,13 +10,13 @@ final class DIContainer {
     
     let networkService: NetworkServiceProtocol
     let cacheService: CacheServiceProtocol
+    
     let songRepository: SongRepositoryProtocol
-//    let episodeRepository: EpisodeRepositoryProtocol
-//    let categoryRepository: CategoryRepositoryProtocol
-//    
+    let playlistRepository: PlaylistRepositoryProtocol
+    
     let searchSongUseCase: SearchSongUseCaseImpl
-//    let newEpisodeUseCase: NewEpisodeUseCaseProtocol
-//    let categoryUseCase: CategoryUseCaseProtocol
+    let getPlaylistUseCase: GetPlaylistUseCaseImpl
+    let savePlaylistUseCase: SavePlaylistUseCaseImpl
     
     init(factory: DIContainerFactory) {
         self.factory = factory
@@ -26,16 +26,13 @@ final class DIContainer {
         self.cacheService = factory.makeCacheService()
         
         // Initialize repositories
-        self.songRepository = factory.makeSongRepository(networkService: networkService, cacheService: cacheService)
-//        self.episodeRepository = factory.makeEpisodeRepository(networkService: networkService, cacheService: cacheService)
-//        self.categoryRepository = factory.makeCategoryRepository(networkService: networkService, cacheService: cacheService)
-//        
-//        // Initialize use cases
+        self.songRepository = factory.makeSongRepository(networkService: networkService)
+        self.playlistRepository = factory.makePlaylistRepository(cacheService: cacheService)
+        
+        // Initialize use cases
         self.searchSongUseCase = SearchSongUseCaseImpl(repository: songRepository)
-//        self.newEpisodeUseCase = NewEpisodeUseCaseImpl(
-//            repository: episodeRepository
-//        )
-//        self.categoryUseCase = CategoryUseCaseImpl(repository: categoryRepository)
+        self.getPlaylistUseCase = GetPlaylistUseCaseImpl(repository: playlistRepository)
+        self.savePlaylistUseCase = SavePlaylistUseCaseImpl(repository: playlistRepository)
     }
 }
 

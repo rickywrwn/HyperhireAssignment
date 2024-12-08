@@ -29,8 +29,13 @@ class PlaylistCoordinator: Coordinator {
         
     }
     
-    func showDetailPlaylist() {
-        let viewController = DetailPlaylistViewController()
+    func showDetailPlaylist(with title: String? = nil) {
+        let getPlaylistUseCase = container.getPlaylistUseCase
+        let savePlaylistUseCase = container.savePlaylistUseCase
+        
+        let viewModel = DetailPlaylistViewModel(getPlaylistUseCase: getPlaylistUseCase, savePlaylistUseCase: savePlaylistUseCase, titleFromAddPlaylist: title)
+        
+        let viewController = DetailPlaylistViewController(viewModel: viewModel)
         viewController.coordinator = self
         navigationController.isNavigationBarHidden = true
         navigationController.pushViewController(viewController, animated: true)

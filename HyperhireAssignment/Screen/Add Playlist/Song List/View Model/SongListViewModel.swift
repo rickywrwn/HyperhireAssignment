@@ -15,7 +15,6 @@ protocol SongListViewModelProtocol: AnyObject {
     var onMusicDataChanged: (() -> Void)? { get set }
     var onErrorDataChanged: (() -> Void)? { get set }
     
-    func viewDidLoad()
     func fetchSong(search: String) async
 }
 
@@ -43,10 +42,6 @@ final class SongListViewModel: SongListViewModelProtocol{
         searchSongUseCase: SearchSongUseCaseProtocol
     ) {
         self.searchSongUseCase = searchSongUseCase
-    }
-    
-    func viewDidLoad() {
-        
     }
     
     @MainActor //main actor to make sure its on main thread

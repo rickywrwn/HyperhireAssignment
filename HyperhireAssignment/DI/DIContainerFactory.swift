@@ -11,9 +11,8 @@ import Foundation
 protocol DIContainerFactory {
     func makeNetworkService() -> NetworkServiceProtocol
     func makeCacheService() -> CacheServiceProtocol
-    func makeSongRepository(networkService: NetworkServiceProtocol, cacheService: CacheServiceProtocol) -> SongRepositoryProtocol
-//    func makeEpisodeRepository(networkService: NetworkServiceProtocol, cacheService: CacheServiceProtocol) -> EpisodeRepositoryProtocol
-//    func makeCategoryRepository(networkService: NetworkServiceProtocol, cacheService: CacheServiceProtocol) -> CategoryRepositoryProtocol
+    func makeSongRepository(networkService: NetworkServiceProtocol) -> SongRepositoryProtocol
+    func makePlaylistRepository(cacheService: CacheServiceProtocol) -> PlaylistRepositoryProtocol
 }
 
 class DIFactory: DIContainerFactory {
@@ -32,16 +31,12 @@ class DIFactory: DIContainerFactory {
         return try! CacheService()
     }
     
-    func makeSongRepository(networkService: NetworkServiceProtocol, cacheService: CacheServiceProtocol) -> SongRepositoryProtocol {
-        return SongRepositoryImpl(networkService: networkService, cacheService: cacheService)
+    func makeSongRepository(networkService: NetworkServiceProtocol) -> SongRepositoryProtocol {
+        return SongRepositoryImpl(networkService: networkService)
     }
     
-//    func makeEpisodeRepository(networkService: NetworkServiceProtocol, cacheService: CacheServiceProtocol) -> EpisodeRepositoryProtocol {
-//        return EpisodeRepositoryImpl(networkService: networkService, cacheService: cacheService)
-//    }
-//    
-//    func makeCategoryRepository(networkService: NetworkServiceProtocol, cacheService: CacheServiceProtocol) -> CategoryRepositoryProtocol {
-//        return CategoryRepositoryImpl(networkService: networkService, cacheService: cacheService)
-//    }
+    func makePlaylistRepository(cacheService: CacheServiceProtocol) -> PlaylistRepositoryProtocol {
+        return PlaylistRepositoryImpl(cacheService: cacheService)
+    }
 }
 

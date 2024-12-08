@@ -26,6 +26,7 @@ class SearchSongUseCaseImpl: SearchSongUseCaseProtocol {
             return .success(resultData)
             
         case .failure(let error):
+            print("use case error ", error.localizedDescription)
             return .failure(error)
         }
     }

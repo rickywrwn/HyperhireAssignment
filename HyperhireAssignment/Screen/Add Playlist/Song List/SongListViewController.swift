@@ -189,7 +189,7 @@ class SongListViewController: UIViewController{
     
 }
 
-extension SongListViewController, UISearchBarDelegate {
+extension SongListViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         searchSubject.send(searchText)
