@@ -19,7 +19,7 @@ class AddPlaylistViewController: UIViewController {
     }
     
     @objc private func handleConfirm(){
-        dismiss(animated: true)
+        coordinator?.dismissViewController()
         coordinator?.showDetailPlaylist()
     }
     

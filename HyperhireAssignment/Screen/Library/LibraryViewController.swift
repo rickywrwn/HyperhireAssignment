@@ -38,7 +38,6 @@ class LibraryViewController: UIViewController {
         
         setupUI()
         setupFloatingPanel()
-        coordinator?.showAddPlaylist()
         
         toggleStyleButton.addTarget(self, action: #selector(toggleViewMode), for: .touchUpInside)
         addButton.addTarget(self, action: #selector(handleAdd), for: .touchUpInside)

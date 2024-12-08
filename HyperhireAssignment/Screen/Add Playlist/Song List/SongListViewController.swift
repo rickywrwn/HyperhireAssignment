@@ -69,12 +69,15 @@ class SongListViewController: UIViewController, UISearchBarDelegate{
 
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         print("Search button clicked: \(searchBar.text ?? "")")
+        Task {
+            await viewModel.fetchSong(search: searchBar.text ?? "")
+        }
         searchBar.resignFirstResponder() // Dismiss the keyboard
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        print("cancel")
         searchBar.resignFirstResponder()
+        coordinator?.popViewController()
     }
     
     private func setupUI() {

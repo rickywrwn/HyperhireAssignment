@@ -19,9 +19,7 @@ class PlaylistCoordinator: Coordinator {
     }
     
     func start() {
-//        showAddPlaylist()
-//        showDetailPlaylist()
-        showSongList()
+        showAddPlaylist()
     }
     
     private func showAddPlaylist() {
@@ -49,6 +47,14 @@ class PlaylistCoordinator: Coordinator {
         navigationController.isNavigationBarHidden = true
         navigationController.pushViewController(viewController, animated: true)
         
+    }
+    
+    func popViewController() {
+        navigationController.popViewController(animated: true)
+    }
+    
+    func dismissViewController() {
+        navigationController.dismiss(animated: true)
     }
     
     private func dismissSelf() {

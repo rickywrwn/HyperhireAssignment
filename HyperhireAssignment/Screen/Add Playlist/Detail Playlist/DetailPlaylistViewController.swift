@@ -15,6 +15,17 @@ class DetailPlaylistViewController: UIViewController {
         super.viewDidLoad()
         createGradientBG()
         setupUI()
+        
+        backButton.addTarget(self, action: #selector(handleBack), for: .touchUpInside)
+        addButton.addTarget(self, action: #selector(handleAdd), for: .touchUpInside)
+    }
+    
+    @objc private func handleBack() {
+        coordinator?.popViewController()
+    }
+    
+    @objc private func handleAdd() {
+        coordinator?.showSongList()
     }
     
     private func setupUI() {
@@ -27,13 +38,9 @@ class DetailPlaylistViewController: UIViewController {
         NSLayoutConstraint.activate([
             backButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
             backButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 18),
-//            backButton.heightAnchor.constraint(equalToConstant: 28),
-//            backButton.widthAnchor.constraint(equalToConstant: 40),
             
             addButton.centerYAnchor.constraint(equalTo: backButton.centerYAnchor),
             addButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -18),
-//            addButton.heightAnchor.constraint(equalToConstant: 40),
-//            addButton.widthAnchor.constraint(equalToConstant: 40),
             
             titleLabel.topAnchor.constraint(equalTo: backButton.bottomAnchor, constant: 40),
             titleLabel.leadingAnchor.constraint(equalTo: backButton.leadingAnchor),
