@@ -10,11 +10,9 @@ import UIKit
 final class ListLibraryCollectionViewCell: UICollectionViewCell {
     static let identifier = "ListLibraryCollectionViewCell"
     
-    private lazy var imageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFill
+    private lazy var imageView: DynamicImageView = {
+        let imageView = DynamicImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.clipsToBounds = true
         imageView.backgroundColor = .searchTextFieldColor
         return imageView
     }()
@@ -51,21 +49,27 @@ final class ListLibraryCollectionViewCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        imageView.image = nil
+        imageView.imageURLs.removeAll()
         titleLabel.text = nil
         subtitleLabel.text = nil
     }
     
     func configure(with playlist: SavedPlaylist){
-        
-//        if let imageUrlString = music.artworkUrl60, let imageUrl = URL(string: imageUrlString) {
-//            imageView.kf.indicatorType = .activity
-//            imageView.kf.setImage(with: imageUrl, options: [.transition(.fade(0.2)), .cacheOriginalImage])
-//        } else {
-//            imageView.image = ImageManager.image(for: .imagePlaceholder)
-//        }
+
+        if let music = playlist.music, music.count > 0{
+            let topFour = Array(music.prefix(4))
+            
+            imageView.imageURLs = topFour.compactMap {
+                guard let urlString = $0.artworkUrl100, let url = URL(string: urlString) else {
+                    return nil
+                }
+                return url
+            }
+
+        }
     
         titleLabel.text = playlist.name
+        
         if let musicCount = playlist.music?.count{
             subtitleLabel.text = "Playlist • \(musicCount) Songs"
         }
