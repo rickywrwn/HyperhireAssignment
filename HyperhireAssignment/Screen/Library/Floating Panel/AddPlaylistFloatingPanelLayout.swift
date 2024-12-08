@@ -8,7 +8,7 @@
 import UIKit
 import FloatingPanel
 
-class AddPlaylistFloatingPanelLayout: FloatingPanelLayout {
+final class AddPlaylistFloatingPanelLayout: FloatingPanelLayout {
     let position: FloatingPanelPosition = .bottom
     let initialState: FloatingPanelState = .tip
     let anchors: [FloatingPanelState: FloatingPanelLayoutAnchoring] = [

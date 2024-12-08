@@ -8,7 +8,7 @@
 import UIKit
 
 // MARK: - Main TabBar Controller
-class TabBarController: UITabBarController {
+final class TabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupAppearance()

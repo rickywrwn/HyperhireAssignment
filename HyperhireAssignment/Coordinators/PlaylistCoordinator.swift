@@ -11,13 +11,17 @@ class PlaylistCoordinator: Coordinator {
     var navigationController: UINavigationController
     weak var parentCoordinator: Coordinator?
     var childCoordinators: [Coordinator] = []
+    private var container: DIContainer
     
-    init(navigationController: UINavigationController) {
+    init(navigationController: UINavigationController, container: DIContainer) {
         self.navigationController = navigationController
+        self.container = container
     }
     
     func start() {
-        showAddPlaylist()
+//        showAddPlaylist()
+//        showDetailPlaylist()
+        showSongList()
     }
     
     private func showAddPlaylist() {
@@ -30,6 +34,19 @@ class PlaylistCoordinator: Coordinator {
     func showDetailPlaylist() {
         let viewController = DetailPlaylistViewController()
         viewController.coordinator = self
+        navigationController.isNavigationBarHidden = true
+        navigationController.pushViewController(viewController, animated: true)
+        
+    }
+    
+    func showSongList() {
+        let searchSongUseCase = container.searchSongUseCase
+        
+        let viewModel = SongListViewModel(searchSongUseCase: searchSongUseCase)
+        
+        let viewController = SongListViewController(viewModel: viewModel)
+        viewController.coordinator = self
+        navigationController.isNavigationBarHidden = true
         navigationController.pushViewController(viewController, animated: true)
         
     }

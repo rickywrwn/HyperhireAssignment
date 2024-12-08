@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ListLibraryCollectionViewCell: UICollectionViewCell {
+final class ListLibraryCollectionViewCell: UICollectionViewCell {
     static let identifier = "ListLibraryCollectionViewCell"
     
     private lazy var imageView: UIImageView = {

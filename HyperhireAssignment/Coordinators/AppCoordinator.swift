@@ -27,10 +27,12 @@ class AppCoordinator: Coordinator {
     var navigationController: UINavigationController
     var parentCoordinator: Coordinator?
     var childCoordinators: [Coordinator] = []
+    private var container: DIContainer
     
-    init(window: UIWindow) {
+    init(window: UIWindow, container: DIContainer) {
         self.window = window
         self.navigationController = UINavigationController()
+        self.container = container
     }
     
     func start() {
@@ -47,15 +49,18 @@ class AppCoordinator: Coordinator {
     private func setupTabs(_ tabBarController: TabBarController) {
         
         let homeCoordinator = LibraryCoordinator(
-            navigationController: UINavigationController()
+            navigationController: UINavigationController(),
+            container: container
         )
         
         let searchCoordinator = LibraryCoordinator(
-            navigationController: UINavigationController()
+            navigationController: UINavigationController(),
+            container: container
         )
         
         let libraryCoordinator = LibraryCoordinator(
-            navigationController: UINavigationController()
+            navigationController: UINavigationController(),
+            container: container
         )
         
         childCoordinators = [homeCoordinator, searchCoordinator, libraryCoordinator]

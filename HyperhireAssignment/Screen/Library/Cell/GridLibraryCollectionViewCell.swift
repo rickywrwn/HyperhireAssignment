@@ -7,7 +7,7 @@
 
 import UIKit
 
-class GridLibraryCollectionViewCell: UICollectionViewCell {
+final class GridLibraryCollectionViewCell: UICollectionViewCell {
     static let identifier = "GridLibraryCollectionViewCell"
     
     private lazy var imageView: UIImageView = {

@@ -45,6 +45,10 @@ extension UIColor {
         return UIColor(hex: "#7F7F7F")
     }
     
+    static var searchTextFieldColor: UIColor {
+        return UIColor(hex: "#282828")
+    }
+    
 }
 
 

@@ -20,9 +20,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
                 
         let window = UIWindow(windowScene: windowScene)
+        let factory = DIFactory()
+        let container = DIContainer(factory: factory)
         
         appCoordinator = AppCoordinator(
-            window: window
+            window: window,
+            container: container
         )
         
         self.window = window

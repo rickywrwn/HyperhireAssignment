@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AddPlaylistPanel: UIViewController {
+final class AddPlaylistPanel: UIViewController {
     
     var delegate: DismissAddPlaylistPanelDelegate?
     

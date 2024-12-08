@@ -11,9 +11,11 @@ class LibraryCoordinator: Coordinator {
     var navigationController: UINavigationController
     weak var parentCoordinator: Coordinator?
     var childCoordinators: [Coordinator] = []
+    private var container: DIContainer
     
-    init(navigationController: UINavigationController) {
+    init(navigationController: UINavigationController, container: DIContainer) {
         self.navigationController = navigationController
+        self.container = container
     }
     
     func start() {
@@ -24,7 +26,8 @@ class LibraryCoordinator: Coordinator {
     
     func showAddPlaylist (){
         let addPlaylistCoordinator = PlaylistCoordinator(
-            navigationController: navigationController
+            navigationController: navigationController,
+            container: container
         )
         addPlaylistCoordinator.parentCoordinator = self
         childCoordinators.append(addPlaylistCoordinator)
