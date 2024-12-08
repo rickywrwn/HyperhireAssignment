@@ -18,5 +18,6 @@ It also make future unit test easier by creating seperate mock file.
 For playlist persistent i use FileManager cache, Kingfisher for loading network image, and FloatingPanel to create floating view.
 
 <h1>Preview</h1>
-https://github.com/user-attachments/assets/3f0235d2-ffa5-4029-a15e-932dd8963c9b
+
+<video src="https://github.com/user-attachments/assets/3f0235d2-ffa5-4029-a15e-932dd8963c9b" width="300" />
 
