@@ -8,7 +8,7 @@
 import UIKit
 import Combine
 
-class SongListViewController: UIViewController, UISearchBarDelegate{
+class SongListViewController: UIViewController{
     
     weak var coordinator: PlaylistCoordinator?
     let viewModel: SongListViewModelProtocol
@@ -36,19 +36,50 @@ class SongListViewController: UIViewController, UISearchBarDelegate{
         setupUI()
         setupBindings()
         setupSearchDebounce()
+        setupLoadingView()
+        setupErrorView()
         
         searchTextField.delegate = self
-        Task {
-            await viewModel.fetchSong(search: "justin bieber")
+        
+    }
+    
+    private func showErrorView(with error: Error) {
+        stopLoading()
+        errorView.alpha = 0
+        errorView.isHidden = false
+        errorView.configure(with: error)
+        
+        UIView.animate(withDuration: 0.3) {
+            self.errorView.alpha = 1
         }
+    }
+    
+    private func startLoading() {
+        loadingView.alpha = 0
+        loadingView.isHidden = false
+        loadingView.startAnimating()
+        
+        UIView.animate(withDuration: 0.2) {
+            self.loadingView.alpha = 1
+        }
+    }
+    
+    private func stopLoading() {
+        UIView.animate(withDuration: 0.3, animations: {
+            self.loadingView.alpha = 0
+        }, completion: { _ in
+            self.loadingView.stopAnimating()
+            self.loadingView.isHidden = true
+        })
     }
     
     private func setupSearchDebounce() {
         searchSubject
-            .debounce(for: .milliseconds(300), scheduler: RunLoop.main) // 300ms debounce
+            .debounce(for: .milliseconds(500), scheduler: RunLoop.main) // 500ms debounce
             .removeDuplicates()  // Only unique values
             .sink { [weak self] searchText in
                 Task {
+                    self?.startLoading()
                     await self?.viewModel.fetchSong(search: searchText)
                 }
             }
@@ -59,25 +90,34 @@ class SongListViewController: UIViewController, UISearchBarDelegate{
         
         viewModel.onMusicDataChanged = { [weak self] in
             self?.collectionView.reloadData()
+            self?.stopLoading()
         }
         
-    }
-    
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        searchSubject.send(searchText)
-    }
-
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        print("Search button clicked: \(searchBar.text ?? "")")
-        Task {
-            await viewModel.fetchSong(search: searchBar.text ?? "")
+        viewModel.onErrorDataChanged = { [weak self] in
+            self?.showErrorView(with: self?.viewModel.errorData ?? NetworkError.custom("Something's Wrong"))
         }
-        searchBar.resignFirstResponder() // Dismiss the keyboard
     }
     
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.resignFirstResponder()
-        coordinator?.popViewController()
+    private func setupLoadingView() {
+        view.addSubview(loadingView)
+        
+        NSLayoutConstraint.activate([
+            loadingView.topAnchor.constraint(equalTo: view.topAnchor),
+            loadingView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            loadingView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            loadingView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
+    }
+    
+    private func setupErrorView() {
+        view.addSubview(errorView)
+        
+        NSLayoutConstraint.activate([
+            errorView.topAnchor.constraint(equalTo: view.topAnchor),
+            errorView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            errorView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            errorView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
     }
     
     private func setupUI() {
@@ -97,16 +137,30 @@ class SongListViewController: UIViewController, UISearchBarDelegate{
         ])
     }
     
+    let loadingView: LoadingView = {
+        let view = LoadingView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.isHidden = true
+        return view
+    }()
+    
+    let errorView: ErrorView = {
+        let view = ErrorView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.isHidden = true
+        return view
+    }()
+    
     private var searchTextField: UISearchBar = {
         let searchBar = UISearchBar()
         searchBar.placeholder = "Search"
-        searchBar.searchTextField.font = UIFont.AvenirNext(type: .bold, size: 15)
+        searchBar.searchTextField.font = .AvenirNext(type: .bold, size: 15)
         searchBar.translatesAutoresizingMaskIntoConstraints = false
         searchBar.barTintColor = .backgroundColor
         searchBar.tintColor = .white
         searchBar.layer.cornerRadius = 10
         searchBar.showsCancelButton = true
-        
+        searchBar.returnKeyType = .search
         // Customize the search icon
         let iconImage = ImageManager.image(for: .searchIcon)
         let imageView = UIImageView(image: iconImage)
@@ -133,57 +187,23 @@ class SongListViewController: UIViewController, UISearchBarDelegate{
         return collectionView
     }()
     
-
-    func createCollectionViewLayout() -> UICollectionViewLayout {
-        return UICollectionViewCompositionalLayout(section: createListSection())
-    }
-    
-    private func createListSection() -> NSCollectionLayoutSection {
-        // Item
-        let itemSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(1.0),
-            heightDimension: .fractionalHeight(1.0)
-        )
-        let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0)
-        
-        // Group
-        let groupSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(1.0),
-            heightDimension: .uniformAcrossSiblings(estimate: 70.0)
-        )
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
-        
-        // Section
-        let section = NSCollectionLayoutSection(group: group)
-        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
-        section.interGroupSpacing = 0
-        
-        return section
-    }
-    
 }
 
-extension SongListViewController: UICollectionViewDataSource, UICollectionViewDelegate {
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
+extension SongListViewController, UISearchBarDelegate {
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        searchSubject.send(searchText)
+    }
+
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        Task {
+            await viewModel.fetchSong(search: searchBar.text ?? "")
+        }
+        searchBar.resignFirstResponder() // Dismiss the keyboard
     }
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        guard let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: SongListCollectionViewCell.identifier,
-            for: indexPath
-        ) as? SongListCollectionViewCell else {
-            return UICollectionViewCell()
-        }
-        if let music = viewModel.musicData, indexPath.row < music.count{
-            cell.configure(with: music[indexPath.row])
-        }
-        return cell
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        coordinator?.popViewController()
     }
 }

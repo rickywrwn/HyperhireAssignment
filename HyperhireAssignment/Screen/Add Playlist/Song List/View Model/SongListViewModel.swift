@@ -10,8 +10,10 @@ import Foundation
 // MARK: - ViewModel Protocol
 protocol SongListViewModelProtocol: AnyObject {
     var musicData: [Results]? { get }
+    var errorData: Error? { get }
     
     var onMusicDataChanged: (() -> Void)? { get set }
+    var onErrorDataChanged: (() -> Void)? { get set }
     
     func viewDidLoad()
     func fetchSong(search: String) async
@@ -27,8 +29,15 @@ final class SongListViewModel: SongListViewModelProtocol{
         }
     }
     
+    private(set) var errorData: Error? {
+        didSet {
+            onErrorDataChanged?()
+        }
+    }
+    
     // MARK: - Callbacks
     var onMusicDataChanged: (() -> Void)?
+    var onErrorDataChanged: (() -> Void)?
     
     init(
         searchSongUseCase: SearchSongUseCaseProtocol
@@ -42,14 +51,20 @@ final class SongListViewModel: SongListViewModelProtocol{
     
     @MainActor //main actor to make sure its on main thread
     func fetchSong(search: String) async {
-        let result = await searchSongUseCase.execute(search: search)
-        
-        switch result {
-        case .success(let searchedSong):
-            musicData = searchedSong
+        if search.isEmpty{
+            //when search is empty, remove all music data and don't call api
+            musicData?.removeAll()
+        }else{
+            //call API when search query is not empty
+            let result = await searchSongUseCase.execute(search: search)
             
-        case .failure(let error):
-            print(error)
+            switch result {
+            case .success(let searchedSong):
+                musicData = searchedSong
+                
+            case .failure(let error):
+                errorData = error
+            }
         }
     }
 

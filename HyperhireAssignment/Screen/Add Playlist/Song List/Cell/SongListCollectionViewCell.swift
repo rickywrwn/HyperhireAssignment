@@ -23,7 +23,6 @@ final class SongListCollectionViewCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        imageView.backgroundColor = .backgroundColor
         imageView.image = nil
         titleLabel.text = nil
         subtitleLabel.text = nil
@@ -32,7 +31,6 @@ final class SongListCollectionViewCell: UICollectionViewCell {
     func configure(with music: Results){
         
         if let imageUrlString = music.artworkUrl60, let imageUrl = URL(string: imageUrlString) {
-            imageView.backgroundColor = .searchTextFieldColor
             imageView.kf.indicatorType = .activity
             imageView.kf.setImage(with: imageUrl, options: [.transition(.fade(0.2)), .cacheOriginalImage])
         } else {

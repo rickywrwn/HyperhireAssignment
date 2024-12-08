@@ -66,14 +66,14 @@ class AddPlaylistViewController: UIViewController {
         button.setTitle("Confirm", for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.layer.cornerRadius = 26
-        button.titleLabel?.font = UIFont.AvenirNext(type: .bold, size: 20)
+        button.titleLabel?.font = .AvenirNext(type: .bold, size: 20)
         button.setTitleColor(.black, for: .normal)
         return button
     }()
     
     private var nameTextField: UITextField = {
         let textField = UITextField()
-        textField.font = UIFont.AvenirNext(type: .bold, size: 24)
+        textField.font = .AvenirNext(type: .bold, size: 24)
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.textColor = .primaryTextColor
         return textField
